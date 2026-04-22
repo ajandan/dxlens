@@ -1,0 +1,90 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>DX Lens</title>
+    <link rel="stylesheet" href="sidepanel.css">
+  </head>
+  <body>
+    <header class="bar">
+      <span class="title">DX Lens</span>
+      <button id="live-toggle" type="button" class="live" aria-pressed="false">● Live</button>
+      <button id="refresh" type="button" disabled title="Select a case or data page to refresh">↻ Refresh</button>
+      <nav class="tabs" role="tablist">
+        <button id="tab-tree" class="tab active" role="tab" aria-selected="true">Tree</button>
+        <button id="tab-events" class="tab" role="tab" aria-selected="false">Events</button>
+        <button id="tab-snapshots" class="tab" role="tab" aria-selected="false">Snapshots</button>
+        <button id="tab-compare" class="tab hidden" role="tab" aria-selected="false">Compare</button>
+      </nav>
+      <span class="spacer"></span>
+      <span id="tab-label" class="muted"></span>
+      <button id="re-read" type="button" title="Re-bind to the active tab">Re-read</button>
+      <button id="clear" type="button">Clear</button>
+    </header>
+
+    <div class="bar bar--search">
+      <label class="search">
+        <input id="search-input" type="search" placeholder="Search…" autocomplete="off" spellcheck="false">
+        <select id="search-scope">
+          <option value="all">All</option>
+          <option value="current_case">Current case</option>
+          <option value="current_view">Current view</option>
+          <option value="data_pages">Data pages</option>
+          <option value="operator">Operator</option>
+        </select>
+        <span id="search-count" class="muted" aria-live="polite"></span>
+      </label>
+      <span class="spacer"></span>
+      <span id="stats" class="stats" aria-live="polite">0 events</span>
+    </div>
+
+    <div id="breadcrumb" class="breadcrumb" aria-live="polite"></div>
+
+    <main>
+      <section id="pane-tree" class="pane" role="tabpanel" tabindex="0">
+        <div id="tree" class="tree" role="tree" aria-label="Clipboard tree"></div>
+        <aside id="detail" class="detail" aria-label="Node detail">
+          <p class="muted">Select a node to inspect it.</p>
+        </aside>
+      </section>
+      <section id="pane-events" class="pane hidden" role="tabpanel" tabindex="0">
+        <table id="events">
+          <thead>
+            <tr>
+              <th>Time</th><th>Method</th><th>Status</th><th>URL</th><th>Dur (ms)</th><th>Body</th>
+            </tr>
+          </thead>
+          <tbody id="rows"></tbody>
+        </table>
+      </section>
+      <section id="pane-snapshots" class="pane hidden" role="tabpanel" tabindex="0">
+        <div class="toolbar">
+          <button id="snap-take" type="button">Take snapshot (Ctrl+S)</button>
+          <span id="snap-count" class="muted">0 snapshots</span>
+        </div>
+        <table id="snapshots">
+          <thead>
+            <tr>
+              <th>A</th><th>B</th><th>Label</th><th>Created</th><th>Events</th><th></th>
+            </tr>
+          </thead>
+          <tbody id="snap-rows"></tbody>
+        </table>
+        <div class="toolbar">
+          <button id="snap-compare" type="button" disabled>Compare A vs B</button>
+        </div>
+      </section>
+      <section id="pane-compare" class="pane hidden" role="tabpanel" tabindex="0">
+        <div class="toolbar">
+          <span id="diff-summary" class="muted"></span>
+          <label class="inline"><input id="diff-filter" type="checkbox" checked> Show only changes</label>
+          <button id="diff-back" type="button">Back to snapshots</button>
+        </div>
+        <div id="diff-tree" class="tree"></div>
+      </section>
+    </main>
+
+    <div id="ctxmenu" class="ctxmenu hidden" role="menu"></div>
+    <script type="module" src="sidepanel.js"></script>
+  </body>
+</html>
