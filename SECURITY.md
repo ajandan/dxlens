@@ -11,7 +11,7 @@ no-outbound rule is enforced at test time
 Please report suspected vulnerabilities **privately**. Do not open a public
 GitHub issue for security reports.
 
-- Email: `ajanthan.us@gmail.com`, subject `[DX Lens Security]`.
+- Email: `agentic.aismith@gmail.com`, subject `[DX Lens Security]`.
 - Include: affected version, reproduction steps, impact analysis, proposed fix
   if any.
 - Response SLA: an initial acknowledgment within 5 business days.
