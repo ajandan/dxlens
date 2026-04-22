@@ -194,6 +194,6 @@ Please report vulnerabilities privately. See [`SECURITY.md`](./SECURITY.md).
 
 ## Credits
 
-Created by **Ajanthan Jeyakumar**.
+Created by **Ajanthan Arul**.
 
 "Pega" is used descriptively. DX Lens is not affiliated with Pegasystems Inc.

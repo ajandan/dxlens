@@ -82,4 +82,4 @@ See `specs/10-decisions.md` for the full register. Top items:
 
 ## Author
 
-Created by Ajanthan Jeyakumar. Contributions welcome under MIT.
+Created by Ajanthan Arul. Contributions welcome under MIT.

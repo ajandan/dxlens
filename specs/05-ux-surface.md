@@ -40,7 +40,7 @@ Three horizontal zones, top to bottom:
 │                   │                                      │
 │ 📋 Clipboard      │ Property: .Customer.Name             │
 │ ├─📄 Cases        │ Mode: SV · Type: string              │
-│ │  └─WORK-123     │ Value: "Ajanthan Jeyakumar"          │
+│ │  └─WORK-123     │ Value: "Ajanthan Arul"               │
 │ │    ├─content    │                                      │
 │ │    │  ├─ID      │ Source: GET /api/.../cases/WORK-123  │
 │ │    │  └─Customer│ Last updated: 2 seconds ago          │
