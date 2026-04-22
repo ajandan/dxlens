@@ -24,6 +24,9 @@ Thumbs.db
 # Local-only project context (workflow notes, not public-facing)
 CLAUDE.md
 
+# Session transcripts — private, not public-facing
+Chats/
+
 # Icon-rasterizer scratch (the script is kept, intermediate renders are not)
 icons/_render.html
 icons/t*.png
