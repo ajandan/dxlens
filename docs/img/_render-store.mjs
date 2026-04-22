@@ -3,14 +3,42 @@
 
 import { spawn } from 'node:child_process';
 import { writeFile, mkdtemp } from 'node:fs/promises';
-import { tmpdir } from 'node:os';
+import { accessSync } from 'node:fs';
+import { tmpdir, platform } from 'node:os';
 import path from 'node:path';
+import { fileURLToPath, pathToFileURL } from 'node:url';
 import net from 'node:net';
 
-const CHROME = 'C:/Program Files/Google/Chrome/Application/chrome.exe';
-const HTML_URL = 'file:///C:/MyProjects/DxLens/docs/img/_store_screenshot.html';
-const OUT_PATH = 'C:/MyProjects/DxLens/docs/img/store-screenshot-1.png';
+const HERE = path.dirname(fileURLToPath(import.meta.url));
+const HTML_PATH = path.join(HERE, '_store_screenshot.html');
+const HTML_URL = pathToFileURL(HTML_PATH).href;
+const OUT_PATH = path.join(HERE, 'store-screenshot-1.png');
 const W = 1280, H = 800;
+
+// Resolve Chrome/Chromium across platforms. Override with DX_LENS_CHROME
+// env var if your binary is somewhere non-standard.
+function resolveChrome() {
+  if (process.env.DX_LENS_CHROME) return process.env.DX_LENS_CHROME;
+  const candidates = platform() === 'win32' ? [
+    'C:/Program Files/Google/Chrome/Application/chrome.exe',
+    'C:/Program Files (x86)/Google/Chrome/Application/chrome.exe',
+    'C:/Program Files/Microsoft/Edge/Application/msedge.exe'
+  ] : platform() === 'darwin' ? [
+    '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',
+    '/Applications/Chromium.app/Contents/MacOS/Chromium',
+    '/Applications/Microsoft Edge.app/Contents/MacOS/Microsoft Edge'
+  ] : [
+    '/usr/bin/google-chrome',
+    '/usr/bin/chromium',
+    '/usr/bin/chromium-browser',
+    '/snap/bin/chromium'
+  ];
+  for (const c of candidates) {
+    try { accessSync(c); return c; } catch {}
+  }
+  throw new Error('Chrome not found. Set DX_LENS_CHROME to your browser path.');
+}
+const CHROME = resolveChrome();
 
 async function pickFreePort() {
   return new Promise((resolve, reject) => {

@@ -21,6 +21,9 @@ Thumbs.db
 .env
 .env.*
 
+# Local-only project context (workflow notes, not public-facing)
+CLAUDE.md
+
 # Icon-rasterizer scratch (the script is kept, intermediate renders are not)
 icons/_render.html
 icons/t*.png
