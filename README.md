@@ -13,7 +13,14 @@
 [![Chrome](https://img.shields.io/badge/Chrome-116%2B-4285F4)](#install)
 [![Firefox](https://img.shields.io/badge/Firefox-128%2B-FF7139)](#install)
 
+![DX Lens inspecting a Pega Constellation case](docs/img/screenshot-clipboard.png)
+
+<sub><em>DX Lens side panel (right) inspecting a live Customer Service Request case in Pega Constellation (left).</em></sub>
+
 </div>
+
+> [!NOTE]
+> **Experimental release.** v1.x is published to gather feedback from the Pega developer community. Expect rough edges — please file issues.
 
 ---
 
@@ -22,17 +29,6 @@
 If you've worked in Pega's classic portal, you know the **Clipboard** — a live tree of the runtime state (cases, data pages, operator, current view) that made debugging feel like a conversation with the platform. Constellation removed it.
 
 **DX Lens rebuilds it** on top of Constellation's DX API layer. It observes the network traffic your browser is already making, assembles it into a unified clipboard tree, and renders it in Chrome's side panel — searchable, expandable, diffable.
-
-<div align="center">
-
-![DX Lens inspecting a Pega Constellation case](docs/img/screenshot-clipboard.png)
-
-<sub><em>DX Lens side panel (right) showing the live clipboard tree for a Customer Service Request case in Constellation (left).</em></sub>
-
-</div>
-
-> [!NOTE]
-> **Experimental release.** v1.x is published to gather feedback from the Pega developer community. Expect rough edges — please file issues.
 
 ---
 
