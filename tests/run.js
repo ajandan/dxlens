@@ -20,5 +20,9 @@ await microtask();
 import('./refresh.test.js');
 await microtask();
 import('./live-state.test.js');
+await microtask();
+import('./no-egress.test.js');
+await microtask();
+import('./security.test.js');
 
 function microtask() { return new Promise((r) => setTimeout(r, 0)); }

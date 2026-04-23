@@ -5,8 +5,8 @@
 // Excluded from the scan:
 //   - src/injected.js runs in the page's MAIN world and wraps the page's own
 //     fetch/XHR; it does not originate outbound requests.
-//   - refreshInPage() in src/devtools/panel.js is a function whose body is
-//     serialized with toString() and injected into the inspected page; the
+//   - refreshInPage() in src/sidepanel/sidepanel.js is a function whose body
+//     is serialized with toString() and injected into the inspected page; the
 //     fetch inside runs inside the page, not the extension. Allow-listed.
 
 import fs from 'node:fs';
@@ -36,7 +36,7 @@ const EXCLUDED_FILES = new Set([
 // Phrases allowed because they live inside a string that is injected into the
 // page, not executed by the extension itself. Format: { file, marker }.
 const ALLOW_IN_CONTEXT = [
-  { file: path.join(srcRoot, 'devtools', 'panel.js'), marker: 'function refreshInPage' }
+  { file: path.join(srcRoot, 'sidepanel', 'sidepanel.js'), marker: 'function refreshInPage' }
 ];
 
 function walk(dir, acc = []) {

@@ -151,11 +151,11 @@ t('settings: mergeSettings returns a mutable patterns array', () => {
   eq(DEFAULT_SETTINGS.urlPatterns.includes('/extra'), false);
 });
 
-// ---- Refresh bridge in panel.js re-validates origin in the page ----------
+// ---- Refresh bridge in sidepanel.js re-validates origin in the page ------
 
-t('panel.js refreshInPage enforces same-origin fetch', () => {
+t('sidepanel.js refreshInPage enforces same-origin fetch', () => {
   const here = path.dirname(url.fileURLToPath(import.meta.url));
-  const src = fs.readFileSync(path.resolve(here, '..', 'src', 'devtools', 'panel.js'), 'utf8');
+  const src = fs.readFileSync(path.resolve(here, '..', 'src', 'sidepanel', 'sidepanel.js'), 'utf8');
   ok(/u\.origin\s*!==\s*window\.location\.origin/.test(src), 'origin check present in refreshInPage body');
 });
 
